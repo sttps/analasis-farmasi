@@ -14,13 +14,12 @@
     --accent2: #818cf8;
     --accent3: #34d399;
     --warn: #fb923c;
+    --warn2: #f472b6;
     --text: #e2e8f0;
     --muted: #64748b;
     --border: rgba(56,189,248,0.15);
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -28,40 +27,27 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
-
-  /* BG effect */
   body::before {
     content: '';
     position: fixed;
-    top: -40%;
-    left: -20%;
-    width: 80vw;
-    height: 80vw;
+    top: -40%; left: -20%;
+    width: 80vw; height: 80vw;
     background: radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
+    pointer-events: none; z-index: 0;
   }
   body::after {
     content: '';
     position: fixed;
-    bottom: -30%;
-    right: -10%;
-    width: 60vw;
-    height: 60vw;
+    bottom: -30%; right: -10%;
+    width: 60vw; height: 60vw;
     background: radial-gradient(circle, rgba(129,140,248,0.07) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
+    pointer-events: none; z-index: 0;
   }
-
   .wrapper {
-    position: relative;
-    z-index: 1;
-    max-width: 860px;
-    margin: 0 auto;
+    position: relative; z-index: 1;
+    max-width: 880px; margin: 0 auto;
     padding: 2rem 1.2rem 4rem;
   }
-
-  /* HEADER */
   header {
     text-align: center;
     padding: 3rem 0 2.5rem;
@@ -73,19 +59,15 @@
     border: 1px solid rgba(56,189,248,0.3);
     color: var(--accent);
     font-family: 'Syne', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.35rem 0.9rem;
-    border-radius: 99px;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem; border-radius: 99px;
     margin-bottom: 1.2rem;
   }
   h1 {
     font-family: 'Syne', sans-serif;
     font-size: clamp(1.8rem, 5vw, 2.8rem);
-    font-weight: 800;
-    line-height: 1.15;
+    font-weight: 800; line-height: 1.15;
     background: linear-gradient(135deg, #e2e8f0 30%, var(--accent) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -93,17 +75,28 @@
     margin-bottom: 0.8rem;
   }
   .subtitle {
-    color: var(--muted);
-    font-size: 0.95rem;
-    font-weight: 300;
-    max-width: 480px;
-    margin: 0 auto;
-    line-height: 1.6;
+    color: var(--muted); font-size: 0.95rem; font-weight: 300;
+    max-width: 500px; margin: 0 auto; line-height: 1.6;
   }
-
-  /* SEARCH */
+  .stats-row {
+    display: flex; justify-content: center; gap: 2rem;
+    margin-top: 1.5rem; flex-wrap: wrap;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem; font-weight: 800;
+    color: var(--accent); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-top: 0.2rem;
+  }
   .search-wrap {
-    margin: 1.8rem 0 2rem;
+    margin: 1.8rem 0 1rem;
     animation: fadeDown 0.7s 0.1s ease both;
   }
   .search-wrap input {
@@ -114,24 +107,17 @@
     padding: 0.85rem 1.2rem 0.85rem 3rem;
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    outline: none;
+    font-size: 0.95rem; outline: none;
     transition: border-color 0.2s;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='8' stroke='%2364748b' stroke-width='2'/%3E%3Cpath d='m21 21-4.35-4.35' stroke='%2364748b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: 1rem center;
   }
-  .search-wrap input:focus {
-    border-color: rgba(56,189,248,0.5);
-  }
+  .search-wrap input:focus { border-color: rgba(56,189,248,0.5); }
   .search-wrap input::placeholder { color: var(--muted); }
-
-  /* FILTER TABS */
   .filters {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    margin-bottom: 1.5rem;
     animation: fadeDown 0.7s 0.15s ease both;
   }
   .filter-btn {
@@ -139,82 +125,130 @@
     border: 1px solid var(--border);
     color: var(--muted);
     font-family: 'Syne', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.4rem 0.9rem;
-    border-radius: 99px;
-    cursor: pointer;
-    transition: all 0.2s;
+    font-size: 0.75rem; font-weight: 600;
+    padding: 0.4rem 0.9rem; border-radius: 99px;
+    cursor: pointer; transition: all 0.2s;
   }
   .filter-btn:hover, .filter-btn.active {
     background: rgba(56,189,248,0.12);
     border-color: rgba(56,189,248,0.4);
     color: var(--accent);
   }
+  .legend {
+    display: flex; gap: 1.2rem; flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem; color: var(--muted);
+    animation: fadeDown 0.7s 0.2s ease both;
+  }
+  .legend span { display: flex; align-items: center; gap: 0.4rem; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot-pasti { background: var(--accent3); }
+  .dot-mungkin { background: var(--warn); }
+  .dot-materi { background: var(--accent2); }
 
   /* PERCOBAAN CARD */
   .percobaan {
     margin-bottom: 1.5rem;
-    border-radius: 16px;
-    overflow: hidden;
+    border-radius: 16px; overflow: hidden;
     border: 1px solid var(--border);
     background: var(--surface);
     animation: fadeUp 0.6s ease both;
     transition: border-color 0.2s;
   }
   .percobaan:hover { border-color: rgba(56,189,248,0.3); }
-
   .percobaan-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    display: flex; align-items: center; gap: 1rem;
     padding: 1.1rem 1.4rem;
-    cursor: pointer;
-    user-select: none;
+    cursor: pointer; user-select: none;
     transition: background 0.2s;
   }
   .percobaan-header:hover { background: var(--surface2); }
-
   .perc-num {
     font-family: 'Syne', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    color: var(--accent);
+    font-size: 0.65rem; font-weight: 800;
+    letter-spacing: 0.1em; color: var(--accent);
     background: rgba(56,189,248,0.1);
     border: 1px solid rgba(56,189,248,0.2);
-    padding: 0.3rem 0.65rem;
-    border-radius: 8px;
+    padding: 0.3rem 0.65rem; border-radius: 8px;
     white-space: nowrap;
   }
   .perc-title {
     flex: 1;
     font-family: 'Syne', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.3;
+    font-size: 0.9rem; font-weight: 700;
+    color: var(--text); line-height: 1.3;
   }
-  .perc-count {
-    font-size: 0.75rem;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-  .chevron {
-    color: var(--muted);
-    transition: transform 0.3s;
-    flex-shrink: 0;
-  }
+  .perc-count { font-size: 0.75rem; color: var(--muted); white-space: nowrap; }
+  .chevron { color: var(--muted); transition: transform 0.3s; flex-shrink: 0; }
   .percobaan.open .chevron { transform: rotate(180deg); }
-
-  .perc-body {
-    display: none;
-    border-top: 1px solid var(--border);
-    padding: 0.5rem 0;
-  }
+  .perc-body { display: none; border-top: 1px solid var(--border); }
   .percobaan.open .perc-body { display: block; }
 
-  /* SOAL ITEM */
+  /* MATERI SECTION */
+  .materi-section {
+    background: rgba(129,140,248,0.05);
+    border-bottom: 1px solid var(--border);
+  }
+  .materi-header {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.9rem 1.4rem;
+    cursor: pointer; user-select: none;
+    transition: background 0.2s;
+  }
+  .materi-header:hover { background: rgba(129,140,248,0.08); }
+  .materi-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65rem; font-weight: 800;
+    letter-spacing: 0.1em; color: var(--accent2);
+    background: rgba(129,140,248,0.12);
+    border: 1px solid rgba(129,140,248,0.25);
+    padding: 0.2rem 0.6rem; border-radius: 6px;
+  }
+  .materi-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem; font-weight: 700;
+    color: #c4b5fd; flex: 1;
+  }
+  .materi-toggle { color: var(--muted); font-size: 0.75rem; }
+  .materi-body {
+    display: none;
+    padding: 0 1.4rem 1.2rem;
+  }
+  .materi-section.open .materi-body { display: block; }
+  .materi-section.open .materi-toggle { color: var(--accent2); }
+  .materi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .materi-card {
+    background: rgba(129,140,248,0.07);
+    border: 1px solid rgba(129,140,248,0.2);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+  }
+  .materi-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem; font-weight: 700;
+    color: #c4b5fd; margin-bottom: 0.5rem;
+  }
+  .materi-card p {
+    font-size: 0.82rem; color: #94a3b8;
+    line-height: 1.6;
+  }
+  .formula-box {
+    display: inline-block;
+    background: rgba(56,189,248,0.08);
+    border: 1px solid rgba(56,189,248,0.2);
+    border-radius: 6px;
+    padding: 0.15rem 0.5rem;
+    font-family: monospace; font-size: 0.85rem;
+    color: var(--accent); margin: 0.15rem 0;
+  }
+
+  /* SOAL */
+  .soal-list { padding: 0.5rem 0; }
   .soal-item {
     padding: 1rem 1.4rem;
     border-bottom: 1px solid rgba(255,255,255,0.04);
@@ -222,53 +256,38 @@
   }
   .soal-item:last-child { border-bottom: none; }
   .soal-item:hover { background: rgba(255,255,255,0.02); }
-
   .soal-top {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    cursor: pointer;
+    display: flex; align-items: flex-start;
+    gap: 0.75rem; cursor: pointer;
   }
   .soal-badge {
     font-family: 'Syne', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.2rem 0.55rem;
-    border-radius: 6px;
-    white-space: nowrap;
-    margin-top: 2px;
-    flex-shrink: 0;
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.2rem 0.55rem; border-radius: 6px;
+    white-space: nowrap; margin-top: 2px; flex-shrink: 0;
   }
   .badge-pasti {
-    background: rgba(52,211,153,0.12);
-    color: var(--accent3);
+    background: rgba(52,211,153,0.12); color: var(--accent3);
     border: 1px solid rgba(52,211,153,0.25);
   }
   .badge-mungkin {
-    background: rgba(251,146,60,0.12);
-    color: var(--warn);
+    background: rgba(251,146,60,0.12); color: var(--warn);
     border: 1px solid rgba(251,146,60,0.25);
   }
-
+  .badge-bonus {
+    background: rgba(244,114,182,0.12); color: var(--warn2);
+    border: 1px solid rgba(244,114,182,0.25);
+  }
   .soal-q {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.5;
-    flex: 1;
+    font-size: 0.9rem; font-weight: 500;
+    color: var(--text); line-height: 1.5; flex: 1;
   }
   .soal-toggle {
-    color: var(--muted);
-    font-size: 0.75rem;
-    margin-left: auto;
-    padding-left: 0.5rem;
-    white-space: nowrap;
-    align-self: center;
-    flex-shrink: 0;
+    color: var(--muted); font-size: 0.75rem;
+    margin-left: auto; padding-left: 0.5rem;
+    white-space: nowrap; align-self: center; flex-shrink: 0;
   }
-
   .soal-answer {
     display: none;
     margin-top: 0.9rem;
@@ -277,62 +296,34 @@
     border-left: 3px solid var(--accent);
     border-radius: 0 10px 10px 0;
     padding: 0.9rem 1rem;
-    font-size: 0.875rem;
-    line-height: 1.7;
+    font-size: 0.875rem; line-height: 1.75;
     color: #94a3b8;
   }
   .soal-item.open .soal-answer { display: block; }
   .soal-item.open .soal-toggle { color: var(--accent); }
-
-  .soal-answer strong {
-    color: var(--accent);
-    font-weight: 600;
-  }
+  .soal-answer strong { color: var(--accent); font-weight: 600; }
   .soal-answer .formula {
     display: inline-block;
     background: rgba(56,189,248,0.08);
     border: 1px solid rgba(56,189,248,0.2);
     border-radius: 6px;
     padding: 0.15rem 0.5rem;
-    font-family: monospace;
-    font-size: 0.85rem;
-    color: var(--accent);
-    margin: 0.1rem 0;
+    font-family: monospace; font-size: 0.85rem;
+    color: var(--accent); margin: 0.1rem 0;
   }
-  .soal-answer ul {
-    margin: 0.4rem 0 0 1.1rem;
+  .soal-answer ul { margin: 0.4rem 0 0 1.1rem; }
+  .soal-answer ul li { margin-bottom: 0.35rem; }
+  .soal-answer .note {
+    display: block; margin-top: 0.6rem;
+    background: rgba(251,146,60,0.08);
+    border: 1px solid rgba(251,146,60,0.2);
+    border-radius: 6px; padding: 0.5rem 0.75rem;
+    font-size: 0.8rem; color: #fdba74;
   }
-  .soal-answer ul li {
-    margin-bottom: 0.3rem;
-  }
-
-  /* LEGEND */
-  .legend {
-    display: flex;
-    gap: 1.2rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    animation: fadeDown 0.7s 0.2s ease both;
-  }
-  .legend span { display: flex; align-items: center; gap: 0.4rem; }
-  .dot {
-    width: 8px; height: 8px; border-radius: 50%;
-  }
-  .dot-pasti { background: var(--accent3); }
-  .dot-mungkin { background: var(--warn); }
-
-  /* FOOTER */
   .footer {
-    text-align: center;
-    margin-top: 3rem;
-    color: var(--muted);
-    font-size: 0.78rem;
-    opacity: 0.6;
+    text-align: center; margin-top: 3rem;
+    color: var(--muted); font-size: 0.78rem; opacity: 0.6;
   }
-
-  /* ANIMATIONS */
   @keyframes fadeDown {
     from { opacity: 0; transform: translateY(-16px); }
     to { opacity: 1; transform: translateY(0); }
@@ -341,618 +332,1184 @@
     from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
-  .percobaan:nth-child(1) { animation-delay: 0.05s; }
-  .percobaan:nth-child(2) { animation-delay: 0.1s; }
-  .percobaan:nth-child(3) { animation-delay: 0.15s; }
-  .percobaan:nth-child(4) { animation-delay: 0.2s; }
-  .percobaan:nth-child(5) { animation-delay: 0.25s; }
-  .percobaan:nth-child(6) { animation-delay: 0.3s; }
-  .percobaan:nth-child(7) { animation-delay: 0.35s; }
-  .percobaan:nth-child(8) { animation-delay: 0.4s; }
-  .percobaan:nth-child(9) { animation-delay: 0.45s; }
-
+  .percobaan:nth-child(1){animation-delay:0.05s}
+  .percobaan:nth-child(2){animation-delay:0.1s}
+  .percobaan:nth-child(3){animation-delay:0.15s}
+  .percobaan:nth-child(4){animation-delay:0.2s}
+  .percobaan:nth-child(5){animation-delay:0.25s}
+  .percobaan:nth-child(6){animation-delay:0.3s}
+  .percobaan:nth-child(7){animation-delay:0.35s}
+  .percobaan:nth-child(8){animation-delay:0.4s}
+  .percobaan:nth-child(9){animation-delay:0.45s}
   .hidden { display: none !important; }
-
-  @media (max-width: 600px) {
+  @media(max-width:600px){
     .soal-answer { margin-left: 0; }
+    .materi-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <header>
-    <div class="tag">📚 Study Guide</div>
-    <h1>Prediksi Soal Pretest<br>Analisis Farmasi 2026</h1>
-    <p class="subtitle">Rangkuman tujuan, prosedur, perhitungan & materi semua percobaan. Klik soal untuk lihat jawaban!</p>
-  </header>
 
-  <div class="search-wrap">
-    <input type="text" id="searchInput" placeholder="Cari soal atau jawaban...">
+<header>
+  <div class="tag">📚 Study Guide 2026</div>
+  <h1>Prediksi Soal Pretest<br>Analisis Farmasi</h1>
+  <p class="subtitle">Rangkuman materi + prediksi soal lengkap semua percobaan. Klik soal untuk lihat jawaban!</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">Percobaan</div></div>
+    <div class="stat"><div class="stat-num">81</div><div class="stat-label">Total Soal</div></div>
+    <div class="stat"><div class="stat-num">27</div><div class="stat-label">Pasti Keluar</div></div>
+    <div class="stat"><div class="stat-num">54</div><div class="stat-label">Kemungkinan</div></div>
   </div>
+</header>
 
-  <div class="legend">
-    <span><span class="dot dot-pasti"></span> Pasti keluar</span>
-    <span><span class="dot dot-mungkin"></span> Kemungkinan keluar</span>
+<div class="search-wrap">
+  <input type="text" id="searchInput" placeholder="Cari soal atau kata kunci...">
+</div>
+
+<div class="filters">
+  <button class="filter-btn active" onclick="filterAll(this)">Semua</button>
+  <button class="filter-btn" onclick="filterType('pasti',this)">✅ Pasti Keluar</button>
+  <button class="filter-btn" onclick="filterType('mungkin',this)">🔶 Kemungkinan</button>
+  <button class="filter-btn" onclick="filterType('bonus',this)">🩷 Bonus</button>
+</div>
+
+<div class="legend">
+  <span><span class="dot dot-pasti"></span> Pasti keluar</span>
+  <span><span class="dot dot-mungkin"></span> Kemungkinan keluar</span>
+  <span><span class="dot" style="background:var(--warn2)"></span> Bonus / jarang</span>
+  <span><span class="dot dot-materi"></span> Ringkasan materi</span>
+</div>
+
+<div id="cardList">
+
+<!-- ===== PERCOBAAN 1 ===== -->
+<div class="percobaan">
+  <div class="percobaan-header" onclick="togglePerc(this)">
+    <span class="perc-num">P-01</span>
+    <span class="perc-title">Panjang Gelombang Maksimum (λ maks)</span>
+    <span class="perc-count">9 soal</span>
+    <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
-
-  <div class="filters">
-    <button class="filter-btn active" onclick="filterAll(this)">Semua</button>
-    <button class="filter-btn" onclick="filterType('pasti', this)">Pasti Keluar</button>
-    <button class="filter-btn" onclick="filterType('mungkin', this)">Kemungkinan</button>
-  </div>
-
-  <div id="cardList">
-
-  <!-- P1 -->
-  <div class="percobaan" data-perc="1">
-    <div class="percobaan-header" onclick="togglePerc(this)">
-      <span class="perc-num">P-01</span>
-      <span class="perc-title">Panjang Gelombang Maksimum</span>
-      <span class="perc-count">5 soal</span>
-      <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="perc-body">
+    <div class="materi-section">
+      <div class="materi-header" onclick="toggleMateri(this.parentElement)">
+        <span class="materi-label">Materi</span>
+        <span class="materi-title">Ringkasan Teori Percobaan 1</span>
+        <span class="materi-toggle">Buka ▾</span>
+      </div>
+      <div class="materi-body">
+        <div class="materi-grid">
+          <div class="materi-card">
+            <h4>🔬 Spektrofotometri UV-Vis</h4>
+            <p>Alat untuk mengukur absorbansi dan transmitan sampel sebagai fungsi panjang gelombang. UV: 200–350 nm, Vis: 350–800 nm. Prinsip: cahaya melewati kuvet berisi sampel, sebagian diserap dan sebagian diteruskan.</p>
+          </div>
+          <div class="materi-card">
+            <h4>📐 Hukum Lambert-Beer</h4>
+            <p><span class="formula-box">A = ε . b . c</span><br>A = absorbansi, ε = absorptivitas molar, b = tebal kuvet (cm), c = konsentrasi. Absorbansi berbanding lurus dengan konsentrasi.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🎯 λ Maksimum</h4>
+            <p>Panjang gelombang saat absorbansi tertinggi. Pengukuran di λ maks memberikan kepekaan analisis maksimum. λ maks paracetamol = <strong>243 nm</strong> (Farmakope Indonesia 2020).</p>
+          </div>
+          <div class="materi-card">
+            <h4>⚙️ Komponen Spektrofotometer</h4>
+            <p>1) Sumber radiasi (lampu H₂/filamen), 2) Monokromator, 3) Kuvet (kaca/plastik), 4) Fotosel/Detektor, 5) Display. Bekerja secara berurutan dari sumber ke detektor.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🧪 Syarat Pelarut UV-Vis</h4>
+            <p>Harus mampu melarutkan sampel sempurna, tidak mengandung ikatan rangkap terkonjugasi, tidak berwarna, tidak mengabsorbsi sinar yang dipakai sampel, tidak bereaksi dengan analit, kemurnian tinggi.</p>
+          </div>
+          <div class="materi-card">
+            <h4>📊 Perhitungan Pengenceran</h4>
+            <p><span class="formula-box">V₁ × C₁ = V₂ × C₂</span><br>Untuk membuat 2 ppm dari 100 ppm dalam 5 mL: V₁ = (5 × 2)/100 = 0,1 mL = <strong>100 μL</strong></p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="perc-body">
+    <div class="soal-list">
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Apa tujuan dari Percobaan 1?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
         <div class="soal-answer">Mahasiswa dapat melakukan penetapan <strong>panjang gelombang maksimum (λ maks)</strong> pada percobaan penetapan kadar paracetamol dalam tablet secara spektrofotometri UV-Vis.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
-          <span class="soal-q">Jelaskan prosedur pembuatan larutan standar 2 ppm dari larutan induk 100 ppm!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Jelaskan prosedur pembuatan larutan standar paracetamol 2 ppm!</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Pipet <strong>100 μL</strong> larutan induk paracetamol 100 ppm → masukkan ke labu ukur 5 mL → tambahkan metanol p.a hingga tanda batas → homogenkan. Diperoleh larutan standar konsentrasi <strong>2 ppm</strong>.</div>
+        <div class="soal-answer">Timbang 5 mg paracetamol baku → larutkan dalam labu ukur 50 mL dengan metanol p.a → homogenkan (dapat 100 ppm). Pipet <strong>100 μL</strong> → masukkan labu ukur 5 mL → tambah metanol hingga tanda batas → homogenkan → dapat 2 ppm.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
-          <span class="soal-q">Hitung berapa volume larutan 100 ppm yang dibutuhkan untuk membuat 5 mL larutan 2 ppm!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Hitung volume larutan 100 ppm yang diperlukan untuk membuat 5 mL larutan 2 ppm!</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
         <div class="soal-answer">
-          Gunakan rumus pengenceran: <span class="formula">V1 × C1 = V2 × C2</span><br><br>
-          V1 × 100 = 5 × 2<br>
-          V1 = 10 / 100<br>
-          <strong>V1 = 0,1 mL = 100 μL ✅</strong>
+          Rumus: <span class="formula">V₁ × C₁ = V₂ × C₂</span><br>
+          V₁ × 100 = 5 × 2 → V₁ = 10/100 = <strong>0,1 mL = 100 μL ✅</strong>
         </div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Sebutkan dan jelaskan komponen-komponen spektrofotometer UV-Vis!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Sebutkan dan jelaskan komponen spektrofotometer UV-Vis!</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer"><ul><li><strong>Sumber radiasi</strong> – memberi energi radiasi konstan (lampu filamen/hidrogen)</li><li><strong>Monokromator</strong> – menghasilkan radiasi monokromatis melalui cermin berputar</li><li><strong>Kuvet</strong> – wadah sampel, terbuat dari kaca/plastik anti-radiasi</li><li><strong>Fotosel/Detektor</strong> – menangkap cahaya dan mengubahnya menjadi energi listrik</li><li><strong>Display</strong> – mengubah sinyal listrik menjadi angka absorbansi/transmitan</li></ul></div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Mengapa pengukuran dilakukan pada panjang gelombang maksimum?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Karena pada λ maks, <strong>perubahan absorbansi per satuan konsentrasi adalah paling besar</strong>, sehingga kepekaan (sensitivitas) analisis maksimal. Selain itu, kurva absorbansi di sekitar λ maks relatif datar sehingga <strong>kesalahan akibat penyimpangan panjang gelombang minimal</strong>.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Jelaskan hukum Lambert-Beer dan keterangannya!</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
         <div class="soal-answer">
-          <ul>
-            <li><strong>Sumber radiasi</strong> – memberi energi radiasi (lampu filamen/hidrogen)</li>
-            <li><strong>Monokromator</strong> – menghasilkan radiasi monokromatis</li>
-            <li><strong>Kuvet</strong> – wadah sampel (kaca/plastik, anti-radiasi)</li>
-            <li><strong>Fotosel/Detektor</strong> – menangkap cahaya dan mengubahnya ke energi listrik</li>
-            <li><strong>Display</strong> – mengubah sinyal listrik menjadi nilai absorbansi/transmitan</li>
-          </ul>
+          <span class="formula">A = ε . b . c</span><br><br>
+          <strong>A</strong> = absorbansi (tanpa satuan), <strong>ε</strong> = absorptivitas molar (L/mol·cm), <strong>b</strong> = tebal kuvet (cm), <strong>c</strong> = konsentrasi (mol/L). Menyatakan bahwa absorbansi <strong>berbanding lurus</strong> dengan konsentrasi dan tebal larutan.
         </div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Mengapa pengukuran absorbansi dilakukan pada panjang gelombang maksimum?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Sebutkan syarat pelarut yang digunakan dalam spektrofotometri UV-Vis!</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Karena pada λ maks, <strong>perubahan absorbansi per satuan konsentrasi adalah paling besar</strong>, sehingga diperoleh kepekaan analisis yang maksimum. λ maks paracetamol menurut Farmakope adalah <strong>243 nm</strong>.</div>
+        <div class="soal-answer"><ul><li>Mampu melarutkan sampel dengan sempurna</li><li>Tidak mengandung ikatan rangkap terkonjugasi</li><li>Tidak berwarna dan tidak mengabsorbsi sinar pada daerah pengukuran</li><li>Tidak bereaksi/berinteraksi dengan analit</li><li>Memiliki kemurnian tinggi (p.a = pro analysis)</li></ul></div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Berapa λ maks paracetamol menurut Farmakope Indonesia? Mengapa penting mengacu pada referensi ini?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">λ maks paracetamol menurut <strong>Farmakope Indonesia Edisi VI (2020) adalah 243 nm</strong>. Penting karena Farmakope merupakan standar resmi acuan mutu, keamanan, dan efektivitas obat di Indonesia, sehingga hasil praktikum dapat divalidasi/dibandingkan dengan standar tersebut.</div>
+      </div>
+      <div class="soal-item" data-type="bonus">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-bonus">Bonus</span>
+          <span class="soal-q">Apa yang dimaksud transisi elektronik dalam konteks spektrofotometri UV-Vis?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Transisi elektronik adalah <strong>promosi elektron dari orbital berenergi rendah (ground state) ke orbital berenergi lebih tinggi (excited state)</strong> akibat penyerapan energi foton dari radiasi UV/Vis. Senyawa dengan gugus kromofor (seperti gugus aromatik benzena pada paracetamol) dapat menyerap radiasi UV sehingga mengalami transisi ini.</div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- P2 -->
-  <div class="percobaan" data-perc="2">
-    <div class="percobaan-header" onclick="togglePerc(this)">
-      <span class="perc-num">P-02</span>
-      <span class="perc-title">Linieritas dan Sensitivitas</span>
-      <span class="perc-count">5 soal</span>
-      <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- ===== PERCOBAAN 2 ===== -->
+<div class="percobaan">
+  <div class="percobaan-header" onclick="togglePerc(this)">
+    <span class="perc-num">P-02</span>
+    <span class="perc-title">Linieritas dan Sensitivitas</span>
+    <span class="perc-count">9 soal</span>
+    <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="perc-body">
+    <div class="materi-section">
+      <div class="materi-header" onclick="toggleMateri(this.parentElement)">
+        <span class="materi-label">Materi</span>
+        <span class="materi-title">Ringkasan Teori Percobaan 2</span>
+        <span class="materi-toggle">Buka ▾</span>
+      </div>
+      <div class="materi-body">
+        <div class="materi-grid">
+          <div class="materi-card">
+            <h4>📈 Linieritas</h4>
+            <p>Kemampuan metode menghasilkan respon sebanding dengan konsentrasi. Diukur dengan membuat kurva kalibrasi minimal 6 konsentrasi berbeda. Kurva berupa garis lurus jika hukum Lambert-Beer terpenuhi.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🔢 Koefisien Korelasi (r)</h4>
+            <p>Syarat: r ≥ 0,99 (Miller & Miller), R² > 0,995 (Eurachem), r² ≥ 0,997 (Gandjar & Rohman). Hubungan linier ideal: b = 0, r = ±1.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🎯 LOD & LOQ</h4>
+            <p><span class="formula-box">LOD = 3 × Sy/x / b</span><br><span class="formula-box">LOQ = 10 × Sy/x / b</span><br>LOD = deteksi kualitatif, LOQ = penetapan kuantitatif dengan presisi yang diterima.</p>
+          </div>
+          <div class="materi-card">
+            <h4>📐 Persamaan Regresi</h4>
+            <p><span class="formula-box">y = a + bx</span><br>y = absorbansi, x = konsentrasi, a = intercept, b = slope. Slope menunjukkan sensitivitas metode.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🧪 Seri Konsentrasi P-02</h4>
+            <p>1; 1,5; 2; 2,5; 3; 3,5 ppm. Volume dari induk 100 ppm: 50, 75, 100, 125, 150, 175 μL masing-masing dalam labu ukur 5 mL.</p>
+          </div>
+          <div class="materi-card">
+            <h4>✅ Validasi Metode</h4>
+            <p>Berdasarkan ICH: 8 parameter validasi yaitu presisi, akurasi, LOD, LOQ, spesifisitas, linieritas, kisaran (range), dan ketahanan (robustness).</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="perc-body">
+    <div class="soal-list">
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
-          <span class="soal-q">Apa tujuan uji linieritas dan sensitivitas?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Apa tujuan uji linieritas dan sensitivitas (Percobaan 2)?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Untuk mengetahui kemampuan metode dalam memberikan hasil yang <strong>sebanding dengan konsentrasi analit</strong> (linieritas) dan menentukan nilai <strong>LOD & LOQ</strong> (sensitivitas).</div>
+        <div class="soal-answer">Mahasiswa dapat melakukan uji linieritas (kemampuan metode memberikan hasil sebanding dengan konsentrasi) dan uji sensitivitas (penentuan <strong>LOD & LOQ</strong>) pada penetapan kadar paracetamol secara Spektrofotometri UV-Vis.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Jelaskan prosedur pembuatan larutan seri standar 1–3,5 ppm!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Pipet 50, 75, 100, 125, 150, 175 μL dari larutan induk 100 ppm → masing-masing masukkan ke labu ukur 5 mL → tambahkan metanol p.a hingga tanda batas → homogenkan → baca absorbansi pada λ maks.</div>
+        <div class="soal-answer">Pipet 50, 75, 100, 125, 150, 175 μL dari larutan induk 100 ppm → masing-masing ke labu ukur 5 mL → tambah metanol p.a hingga tanda batas → homogenkan → baca absorbansi pada <strong>λ maks</strong> yang diperoleh dari Percobaan 1.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Bagaimana cara menghitung nilai LOD dan LOQ?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
         <div class="soal-answer">
           <span class="formula">LOD = 3 × Sy/x / b</span><br>
           <span class="formula">LOQ = 10 × Sy/x / b</span><br><br>
-          Keterangan: <strong>Sy/x</strong> = simpangan baku residual, <strong>b</strong> = slope kurva kalibrasi
+          <strong>Sy/x</strong> = simpangan baku residual kurva kalibrasi, <strong>b</strong> = slope persamaan garis. LOD bersifat kualitatif, LOQ bersifat kuantitatif.
         </div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Berapa syarat nilai koefisien korelasi (r) agar metode dikatakan linier?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Berapa syarat nilai r dan R² agar metode dikatakan linier?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Menurut Miller & Miller (2005), metode dikatakan memiliki korelasi baik jika <strong>r ≥ 0,99</strong>. Menurut Eurachem, R² harus <strong>> 0,995</strong>. Idealnya r² ≥ 0,997 (Gandjar & Rohman).</div>
+        <div class="soal-answer"><ul><li>Miller & Miller (2005): <strong>r ≥ 0,99</strong></li><li>Eurachem (1998): <strong>R² > 0,995</strong></li><li>Gandjar & Rohman (2012): <strong>r² ≥ 0,997</strong></li></ul>Nilai mendekati 1 menunjukkan korelasi yang baik antara konsentrasi dan absorbansi.</div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
           <span class="soal-q">Apa perbedaan LOD dan LOQ?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer"><strong>LOD</strong> = konsentrasi terkecil analit yang masih bisa <em>dideteksi</em> (bersifat kualitatif). <strong>LOQ</strong> = konsentrasi terkecil analit yang dapat <em>ditetapkan secara kuantitatif</em> dengan presisi yang dapat diterima.</div>
+        <div class="soal-answer"><strong>LOD (Limit of Detection)</strong> = konsentrasi terkecil analit yang masih bisa dideteksi dan dibedakan secara nyata dari nol, bersifat <em>kualitatif</em>.<br><br><strong>LOQ (Limit of Quantification)</strong> = konsentrasi terkecil analit yang dapat ditetapkan secara <em>kuantitatif</em> dengan presisi yang dapat diterima.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Apa yang dimaksud dengan validasi metode analisis dan mengapa penting?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Validasi metode adalah <strong>proses penilaian terhadap suatu metode analisis</strong> berdasarkan percobaan laboratorium untuk memastikan metode tersebut memenuhi persyaratan dan sesuai tujuannya (ISO 17025). Penting agar setiap pengukuran di masa mendatang cukup dekat dengan nilai kandungan analit yang sebenarnya.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Apa yang dimaksud slope (b) pada persamaan regresi linier y = a + bx? Hubungannya dengan sensitivitas?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer"><strong>Slope (b)</strong> menunjukkan kemiringan garis kurva kalibrasi = besarnya kenaikan respon analitik (absorbansi) per satuan konsentrasi. <strong>Semakin besar slope → semakin tinggi sensitivitas metode</strong>. Sensitivitas juga dinyatakan melalui nilai LOD dan LOQ.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Sebutkan 8 parameter validasi metode menurut ICH!</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer"><ul><li>Presisi</li><li>Akurasi</li><li>Batas Deteksi (LOD)</li><li>Batas Kuantifikasi (LOQ)</li><li>Spesifisitas</li><li>Linieritas</li><li>Kisaran (Range)</li><li>Ketahanan (Robustness)</li></ul></div>
+      </div>
+      <div class="soal-item" data-type="bonus">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-bonus">Bonus</span>
+          <span class="soal-q">Mengapa pada uji linieritas digunakan minimal 6 konsentrasi yang berbeda?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Penggunaan minimal <strong>6 titik konsentrasi</strong> diperlukan agar evaluasi linieritas secara statistik (regresi linier) lebih akurat dan representatif, sehingga persamaan garis lurus yang dihasilkan valid untuk mewakili hubungan absorbansi vs konsentrasi pada rentang tersebut (Harmita, 2004).</div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- P3 -->
-  <div class="percobaan" data-perc="3">
-    <div class="percobaan-header" onclick="togglePerc(this)">
-      <span class="perc-num">P-03</span>
-      <span class="perc-title">Presisi</span>
-      <span class="perc-count">5 soal</span>
-      <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- ===== PERCOBAAN 3 ===== -->
+<div class="percobaan">
+  <div class="percobaan-header" onclick="togglePerc(this)">
+    <span class="perc-num">P-03</span>
+    <span class="perc-title">Presisi</span>
+    <span class="perc-count">9 soal</span>
+    <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="perc-body">
+    <div class="materi-section">
+      <div class="materi-header" onclick="toggleMateri(this.parentElement)">
+        <span class="materi-label">Materi</span>
+        <span class="materi-title">Ringkasan Teori Percobaan 3</span>
+        <span class="materi-toggle">Buka ▾</span>
+      </div>
+      <div class="materi-body">
+        <div class="materi-grid">
+          <div class="materi-card">
+            <h4>🎯 Presisi</h4>
+            <p>Parameter keberulangan metode analisis, dilihat dari nilai RSD. Dilakukan 6 kali pengulangan pada konsentrasi 2 ppm (100% dari konsentrasi uji).</p>
+          </div>
+          <div class="materi-card">
+            <h4>📊 Rumus SD & RSD</h4>
+            <p><span class="formula-box">SD = √[Σ(xi−x̄)²/(n−1)]</span><br><span class="formula-box">RSD = (SD/x̄) × 100%</span><br>Nilai RSD yang baik ≤ 2%.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🔁 3 Tingkatan Presisi (ICH)</h4>
+            <p>1) <strong>Repeatability</strong> – kondisi sama berulang, 2) <strong>Intermediate Precision</strong> – salah satu kondisi berbeda, 3) <strong>Reproducibility</strong> – antar laboratorium.</p>
+          </div>
+          <div class="materi-card">
+            <h4>📋 Opsi ICH untuk Repeatability</h4>
+            <p>Opsi 1: 9 pengukuran pada 3 konsentrasi (80%, 100%, 120%) × 3 replikasi. Opsi 2: 6 pengukuran pada 100% konsentrasi uji. Percobaan 3 menggunakan <strong>Opsi 2 (6×)</strong>.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="perc-body">
+    <div class="soal-list">
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Apa tujuan uji presisi?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Untuk mengukur <strong>keberulangan (repeatability)</strong> metode analisis yang dilihat dari nilai <strong>RSD (Relative Standard Deviation)</strong> dari sejumlah sampel.</div>
+        <div class="soal-answer">Mahasiswa dapat melakukan uji presisi untuk mengukur <strong>keberulangan (repeatability)</strong> metode analisis dilihat dari nilai <strong>RSD (Relative Standard Deviation)</strong> pada penetapan kadar paracetamol secara spektrofotometri UV-Vis.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
-          <span class="soal-q">Jelaskan prosedur uji presisi di Percobaan 3!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Jelaskan prosedur uji presisi Percobaan 3!</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Pipet 100 μL larutan induk 100 ppm → labu ukur 5 mL → tambah metanol hingga tanda batas → baca absorbansi pada λ maks. Pengukuran dilakukan <strong>6 kali pengulangan</strong>.</div>
+        <div class="soal-answer">Pipet 100 μL larutan induk 100 ppm → labu ukur 5 mL → tambah metanol p.a hingga tanda batas → homogenkan → baca absorbansi pada λ maks. Pengukuran dilakukan sebanyak <strong>6 kali pengulangan</strong>.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
-          <span class="soal-q">Bagaimana cara menghitung SD dan RSD?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Bagaimana cara menghitung nilai SD dan RSD?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
         <div class="soal-answer">
-          <span class="formula">SD = √[Σ(xi - x̄)² / (n-1)]</span><br>
+          <span class="formula">SD = √[Σ(xi − x̄)² / (n−1)]</span><br>
           <span class="formula">RSD = (SD / x̄) × 100%</span><br><br>
-          Keterangan: <strong>xi</strong> = nilai tiap pengukuran, <strong>x̄</strong> = rata-rata, <strong>n</strong> = jumlah pengulangan
+          xi = nilai tiap pengukuran, x̄ = rata-rata, n = jumlah pengulangan. RSD yang baik umumnya <strong>≤ 2%</strong>.
         </div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Sebutkan 3 tingkatan presisi menurut ICH!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Sebutkan 3 tingkatan presisi menurut ICH dan jelaskan masing-masing!</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">
-          <ul>
-            <li><strong>Repeatability</strong> – kondisi sama, pengulangan di analis & alat yang sama</li>
-            <li><strong>Intermediate Precision</strong> – salah satu kondisi berbeda (analis/alat/hari)</li>
-            <li><strong>Reproducibility</strong> – antar laboratorium yang berbeda</li>
-          </ul>
-        </div>
+        <div class="soal-answer"><ul><li><strong>Repeatability</strong> – kondisi percobaan sama (alat, tempat, waktu, analis sama), dilakukan berulang</li><li><strong>Intermediate Precision</strong> – salah satu kondisi berbeda (analis, alat, hari, atau tempat berbeda)</li><li><strong>Reproducibility</strong> – presisi antar laboratorium berbeda (studi kolaboratif)</li></ul></div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Apa yang dimaksud dengan RSD dan berapa nilai yang dapat diterima?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Apa yang dimaksud RSD dan berapa nilai yang dapat diterima?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">RSD (Relative Standard Deviation) atau CV (Coefficient of Variation) adalah ukuran variabilitas relatif dari hasil pengukuran. Nilai RSD yang baik umumnya <strong>≤ 2%</strong> untuk metode farmasi.</div>
+        <div class="soal-answer">RSD (Relative Standard Deviation) = CV (Coefficient of Variation) adalah ukuran variabilitas relatif hasil pengukuran terhadap rata-ratanya. Nilai yang dapat diterima dalam metode farmasi umumnya <strong>≤ 2%</strong>. Semakin kecil RSD, semakin presisi metodenya.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Mengapa pada Percobaan 3 pengukuran dilakukan 6 kali?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Berdasarkan panduan ICH, salah satu opsi untuk uji <strong>repeatability</strong> adalah pengukuran minimal <strong>6 kali pada 100% konsentrasi uji</strong>. Jumlah ini dianggap representatif secara statistik untuk menilai keberulangan metode.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Apa perbedaan presisi dan akurasi? Berikan contoh!</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer"><strong>Presisi</strong> = keberulangan (seberapa dekat hasil pengukuran satu sama lain). <strong>Akurasi</strong> = ketepatan (seberapa dekat hasil pengukuran dengan nilai sebenarnya).<br><br>Contoh: dart mengenai satu titik yang sama tapi bukan bullseye = presisi tinggi, akurasi rendah. Dart mengenai bullseye = keduanya tinggi.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Parameter apa saja yang harus didokumentasikan dalam uji presisi?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Berdasarkan ICH, dokumentasi presisi mencakup: <strong>simpangan baku (SD)</strong>, <strong>simpangan baku relatif (RSD) atau koefisien variasi (CV)</strong>, dan <strong>kisaran kepercayaan (confidence interval)</strong>.</div>
+      </div>
+      <div class="soal-item" data-type="bonus">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-bonus">Bonus</span>
+          <span class="soal-q">Apa perbedaan intermediate precision dan reproducibility?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer"><strong>Intermediate precision</strong> dilakukan di dalam satu laboratorium yang sama namun dengan variasi kondisi (analis, hari, peralatan berbeda). <strong>Reproducibility</strong> dilakukan di <em>laboratorium yang berbeda</em> (studi kolaboratif/uji banding antar lab/uji profisiensi). Reproducibility merupakan tingkatan presisi tertinggi.</div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- P4 -->
-  <div class="percobaan" data-perc="4">
-    <div class="percobaan-header" onclick="togglePerc(this)">
-      <span class="perc-num">P-04</span>
-      <span class="perc-title">Akurasi</span>
-      <span class="perc-count">5 soal</span>
-      <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- ===== PERCOBAAN 4 ===== -->
+<div class="percobaan">
+  <div class="percobaan-header" onclick="togglePerc(this)">
+    <span class="perc-num">P-04</span>
+    <span class="perc-title">Akurasi (% Recovery)</span>
+    <span class="perc-count">9 soal</span>
+    <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="perc-body">
+    <div class="materi-section">
+      <div class="materi-header" onclick="toggleMateri(this.parentElement)">
+        <span class="materi-label">Materi</span>
+        <span class="materi-title">Ringkasan Teori Percobaan 4</span>
+        <span class="materi-toggle">Buka ▾</span>
+      </div>
+      <div class="materi-body">
+        <div class="materi-grid">
+          <div class="materi-card">
+            <h4>🎯 Akurasi</h4>
+            <p>Ketepatan/kedekatan antara nilai terukur dengan nilai sebenarnya. Diukur melalui % recovery (perolehan kembali) dengan metode spiked sampel.</p>
+          </div>
+          <div class="materi-card">
+            <h4>📐 Rumus Recovery</h4>
+            <p><span class="formula-box">Kadar Adisi = Sampel − Blanko</span><br><span class="formula-box">% Recovery = (Adisi/Baku) × 100%</span><br>Nilai ideal: 98–102%, toleransi umum: 80–120%.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🧪 Spiked Sample</h4>
+            <p>Teknik menambahkan baku standar (2 mL, 500 ppm) ke sampel. Perbedaan kadar antara sampel yang di-spike dan tidak (blanko) = kadar adisi yang dibandingkan dengan kadar baku teoritis.</p>
+          </div>
+          <div class="materi-card">
+            <h4>📋 3 Cara Penentuan Akurasi</h4>
+            <p>1) Certified Reference Material (CRM), 2) Spiked blanko (recovery), 3) Standard Addition Method. Percobaan 4 menggunakan <strong>metode spiked</strong>.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🔁 Pengulangan ICH</h4>
+            <p>ICH mensyaratkan 9 penetapan kadar: 3 konsentrasi × 3 replikasi (80%, 100%, 120%). Di modul ini menggunakan 3 replikasi pada konsentrasi yang sama (0,4 mg/tablet).</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="perc-body">
+    <div class="soal-list">
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Apa tujuan uji akurasi?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Untuk mengetahui <strong>ketepatan/kedekatan</strong> metode analisis antara nilai terukur dengan nilai sebenarnya melalui perhitungan <strong>% recovery</strong>.</div>
+        <div class="soal-answer">Mahasiswa dapat melakukan uji akurasi untuk melihat <strong>ketepatan/kedekatan metode analisis</strong> antara nilai terukur dengan nilai sebenarnya melalui perhitungan <strong>% recovery (perolehan kembali)</strong>.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Jelaskan prosedur pembuatan larutan sampel akurasi!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Timbang 20 tablet → gerus → timbang setara 5 mg paracetamol (2 replikasi). Satu labu ditambah 2 mL standar 500 ppm (spiked), satu lagi tidak (blanko). Keduanya dilarutkan dalam labu 25 mL metanol → pipet 100 μL → encerkan ke labu 10 mL → baca absorbansi.</div>
+        <div class="soal-answer">Timbang 20 tablet → gerus → timbang setara 5 mg paracetamol (2 replikasi). Satu labu ditambah <strong>2 mL standar 500 ppm</strong> (spiked/sampel), satu tanpa penambahan (blanko). Keduanya dalam labu 25 mL metanol → pipet 100 μL → labu 10 mL → baca absorbansi. Ulangi <strong>3 kali</strong>.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Bagaimana cara menghitung % recovery?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
         <div class="soal-answer">
-          <span class="formula">Kadar Adisi = Kadar Sampel – Kadar Blanko</span><br>
+          <span class="formula">Kadar Adisi = Kadar Sampel − Kadar Blanko</span><br>
           <span class="formula">% Recovery = (Kadar Adisi / Kadar Baku) × 100%</span><br><br>
-          Nilai % recovery yang baik umumnya berkisar <strong>98–102%</strong>
+          Nilai % recovery yang baik: <strong>98–102%</strong>, toleransi umum 80–120%.
         </div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
           <span class="soal-q">Sebutkan 3 cara penentuan akurasi menurut Harmita (2004)!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">
-          <ul>
-            <li>Membandingkan hasil analisis dengan <strong>Certified Reference Material (CRM)</strong></li>
-            <li>Uji perolehan kembali / <strong>recovery</strong> dengan spiked blanko</li>
-            <li>Metode penambahan baku (<strong>Standard Addition Method</strong>)</li>
-          </ul>
-        </div>
+        <div class="soal-answer"><ul><li><strong>Certified Reference Material (CRM)</strong> – membandingkan hasil analisis dengan bahan referensi bersertifikat</li><li><strong>Spiked blanko (recovery)</strong> – memasukkan analit ke dalam matriks blanko</li><li><strong>Standard Addition Method</strong> – penambahan baku pada matriks sampel yang mengandung analit</li></ul></div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Apa perbedaan presisi dan akurasi?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Mengapa dibutuhkan larutan blanko dalam uji akurasi?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer"><strong>Presisi</strong> = keberulangan/keterulangan hasil pengukuran (seberapa dekat antar pengukuran). <strong>Akurasi</strong> = ketepatan hasil pengukuran terhadap nilai sebenarnya. Metode yang baik harus memiliki keduanya.</div>
+        <div class="soal-answer">Blanko diperlukan untuk mengetahui <strong>kadar paracetamol asli dalam sampel tablet tanpa penambahan baku</strong>. Kadar blanko ini dikurangkan dari kadar sampel yang di-spike untuk mendapatkan kadar adisi yang murni berasal dari penambahan baku standar.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Berapa konsentrasi larutan standar yang dibuat pada Percobaan 4 dan bagaimana cara membuatnya?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Dibuat larutan standar <strong>500 ppm</strong> dengan cara: timbang 25 mg paracetamol baku → labu ukur 50 mL → larutkan dengan metanol p.a hingga tanda batas → homogenkan. (C = 25 mg / 50 mL = 500 ppm ✅)</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Apa yang dimaksud "kadar baku" dalam perhitungan recovery?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Kadar baku adalah <strong>jumlah/konsentrasi baku standar yang ditambahkan secara teoritis</strong> (spiked) ke dalam sampel. Nilainya dihitung dari volume dan konsentrasi larutan standar yang ditambahkan (2 mL × 500 ppm = 1000 μg/25 mL = 40 ppm dalam labu 25 mL).</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Apa yang terjadi jika nilai % recovery terlalu tinggi atau terlalu rendah?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer"><strong>% Recovery terlalu tinggi (>120%)</strong>: ada <em>positive bias</em>, kemungkinan ada interferensi/pengotor yang ikut terukur. <strong>% Recovery terlalu rendah (<80%)</strong>: ada <em>negative bias</em>, kemungkinan analit hilang saat preparasi atau ada matriks yang mengganggu. Keduanya menunjukkan metode kurang akurat.</div>
+      </div>
+      <div class="soal-item" data-type="bonus">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-bonus">Bonus</span>
+          <span class="soal-q">Mengapa tablet perlu ditimbang sebanyak 20 tablet kemudian dirata-rata sebelum dianalisis?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Karena dalam proses produksi tablet, kandungan zat aktif dalam setiap tablet bisa sedikit bervariasi. Dengan menimbang 20 tablet dan menggunakan rata-rata bobot, sampel yang dianalisis menjadi lebih <strong>representatif</strong> terhadap batch tablet secara keseluruhan, sehingga hasil analisis lebih akurat.</div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- P5 -->
-  <div class="percobaan" data-perc="5">
-    <div class="percobaan-header" onclick="togglePerc(this)">
-      <span class="perc-num">P-05</span>
-      <span class="perc-title">Penetapan Kadar Sampel</span>
-      <span class="perc-count">5 soal</span>
-      <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- ===== PERCOBAAN 5 ===== -->
+<div class="percobaan">
+  <div class="percobaan-header" onclick="togglePerc(this)">
+    <span class="perc-num">P-05</span>
+    <span class="perc-title">Penetapan Kadar Sampel Tablet</span>
+    <span class="perc-count">9 soal</span>
+    <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="perc-body">
+    <div class="materi-section">
+      <div class="materi-header" onclick="toggleMateri(this.parentElement)">
+        <span class="materi-label">Materi</span>
+        <span class="materi-title">Ringkasan Teori Percobaan 5</span>
+        <span class="materi-toggle">Buka ▾</span>
+      </div>
+      <div class="materi-body">
+        <div class="materi-grid">
+          <div class="materi-card">
+            <h4>🎯 Tujuan P-05</h4>
+            <p>Menetapkan kadar paracetamol aktual dalam tablet menggunakan persamaan kurva baku yang telah dibuat di P-02. Ini adalah aplikasi nyata dari semua percobaan sebelumnya.</p>
+          </div>
+          <div class="materi-card">
+            <h4>📐 Cara Hitung Kadar</h4>
+            <p>Substitusi Abs sampel ke: <span class="formula-box">x = (y − a) / b</span><br>di mana y = Abs sampel, a = intercept, b = slope dari kurva baku.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🧪 Faktor Pengenceran</h4>
+            <p>Sampel diencerkan 2 tahap: 5 mg → 25 mL (200 ppm) → pipet 100 μL → 10 mL. FP total = 250. Kadar sebenarnya = konsentrasi terukur × FP × faktor konversi.</p>
+          </div>
+          <div class="materi-card">
+            <h4>⚠️ Absorptivitas</h4>
+            <p>ε tergantung pada suhu, pelarut, struktur molekul, dan panjang gelombang, tapi TIDAK tergantung konsentrasi, tebal kuvet, dan intensitas radiasi.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="perc-body">
+    <div class="soal-list">
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Apa tujuan Percobaan 5?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Mahasiswa dapat melakukan <strong>penetapan kadar paracetamol</strong> dalam tablet secara spektrofotometri UV-Vis menggunakan kurva baku yang telah dibuat.</div>
+        <div class="soal-answer">Mahasiswa dapat melakukan <strong>penetapan kadar paracetamol dalam tablet</strong> secara spektrofotometri UV-Vis menggunakan persamaan kurva baku yang telah diperoleh dari Percobaan 2.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
-          <span class="soal-q">Jelaskan prosedur pembuatan larutan sampel tablet!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Jelaskan prosedur pembuatan larutan sampel tablet Percobaan 5!</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Timbang 20 tablet → gerus → timbang setara 5 mg paracetamol → larutkan dalam labu 25 mL metanol → pipet 100 μL → encerkan ke labu 10 mL → baca absorbansi pada λ maks. Ulangi <strong>3 kali</strong>.</div>
+        <div class="soal-answer">Timbang 20 tablet → gerus homogen → timbang setara 5 mg paracetamol → labu ukur 25 mL + metanol → pipet 100 μL → labu 10 mL + metanol → baca Abs pada λ maks. Ulangi <strong>3 kali</strong>.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Bagaimana cara menghitung kadar paracetamol dari nilai absorbansi sampel?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
         <div class="soal-answer">
-          Substitusi nilai Abs sampel ke persamaan kurva baku dari P-02:<br>
-          <span class="formula">y = a + bx</span><br>
-          Di mana y = Abs sampel, x = konsentrasi (ppm) yang dicari.<br><br>
-          <strong>x = (y – a) / b</strong>
+          Substitusi Abs sampel (y) ke persamaan kurva baku:<br>
+          <span class="formula">y = a + bx → x = (y − a) / b</span><br><br>
+          x = konsentrasi sampel (ppm). Kalikan dengan faktor pengenceran untuk mendapat kadar sebenarnya.
         </div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
           <span class="soal-q">Jelaskan hukum Lambert-Beer dan batasannya!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
         <div class="soal-answer">
           <span class="formula">A = ε . b . c</span><br><br>
-          Absorbansi berbanding lurus dengan konsentrasi. Batasan: berlaku pada konsentrasi rendah, larutan harus homogen, tidak boleh ada partikel tersuspensi, dan tidak ada interaksi antar molekul zat terlarut.
+          Hukum ini berlaku pada: konsentrasi rendah, larutan homogen, tidak ada partikel tersuspensi, tidak ada interaksi antar molekul terlarut, sumber cahaya monokromatis. <strong>Batasan</strong>: pada konsentrasi tinggi, hubungan tidak lagi linier (deviasi positif/negatif).
         </div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
           <span class="soal-q">Mengapa tablet perlu digerus dan dihomogenkan sebelum ditimbang?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Agar sampel yang ditimbang <strong>representatif</strong> (mewakili keseluruhan tablet). Tablet mengandung zat aktif dan eksipien yang perlu terdistribusi merata agar kadar yang dihitung akurat.</div>
+        <div class="soal-answer">Agar sampel yang ditimbang bersifat <strong>representatif</strong> terhadap keseluruhan tablet. Tablet mengandung zat aktif dan eksipien yang perlu terdistribusi merata sehingga bobot yang ditimbang mewakili kadar zat aktif yang sesungguhnya.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Faktor apa saja yang mempengaruhi nilai absorptivitas molar (ε)?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Absorptivitas (ε) dipengaruhi oleh: <strong>suhu</strong>, <strong>pelarut</strong>, <strong>struktur molekul</strong>, dan <strong>panjang gelombang radiasi</strong>. Namun ε <em>tidak dipengaruhi</em> oleh konsentrasi, tebal kuvet, dan intensitas radiasi yang mengenai larutan.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Apa hubungan antara Percobaan 5 dengan Percobaan 1, 2, 3, dan 4 sebelumnya?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Percobaan 5 adalah <strong>puncak aplikasi</strong> dari semua percobaan sebelumnya: P-01 (λ maks yang digunakan untuk pengukuran), P-02 (kurva baku untuk menghitung kadar), P-03 (metode sudah terbukti presisi), P-04 (metode sudah terbukti akurat) → P-05 penetapan kadar sampel nyata.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Apa yang dimaksud faktor pengenceran (FP) dan bagaimana menghitungnya pada Percobaan 5?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">FP = perbandingan volume akhir terhadap volume yang diambil. Di P-05: pengenceran 1 (25 mL/diambil 100 μL = 250×) × pengenceran 2 (10 mL/100 μL = 100×)... atau dihitung total: <strong>kadar sebenarnya = c terukur × total FP</strong>.</div>
+      </div>
+      <div class="soal-item" data-type="bonus">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-bonus">Bonus</span>
+          <span class="soal-q">Mengapa digunakan 3 kali pengulangan pada penetapan kadar sampel?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Pengulangan 3 kali (triplo) dilakukan untuk mendapatkan data yang <strong>valid secara statistik</strong>, mengurangi pengaruh kesalahan acak, dan memungkinkan perhitungan rata-rata, SD, serta RSD yang menggambarkan keberulangan hasil pengukuran.</div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- P6 -->
-  <div class="percobaan" data-perc="6">
-    <div class="percobaan-header" onclick="togglePerc(this)">
-      <span class="perc-num">P-06</span>
-      <span class="perc-title">Pergeseran Bathokromik</span>
-      <span class="perc-count">5 soal</span>
-      <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- ===== PERCOBAAN 6 ===== -->
+<div class="percobaan">
+  <div class="percobaan-header" onclick="togglePerc(this)">
+    <span class="perc-num">P-06</span>
+    <span class="perc-title">Pergeseran Bathokromik (Pengaruh pH)</span>
+    <span class="perc-count">9 soal</span>
+    <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="perc-body">
+    <div class="materi-section">
+      <div class="materi-header" onclick="toggleMateri(this.parentElement)">
+        <span class="materi-label">Materi</span>
+        <span class="materi-title">Ringkasan Teori Percobaan 6</span>
+        <span class="materi-toggle">Buka ▾</span>
+      </div>
+      <div class="materi-body">
+        <div class="materi-grid">
+          <div class="materi-card">
+            <h4>🔴 Bathokromik (Red Shift)</h4>
+            <p>Pergeseran serapan ke arah panjang gelombang LEBIH PANJANG akibat substitusi atau pengaruh pelarut/pH basa. Phenolphthalein dalam suasana basa → merah muda → λ maks bergeser ke kanan.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🔵 Hipsokromik (Blue Shift)</h4>
+            <p>Pergeseran ke arah panjang gelombang LEBIH PENDEK akibat protonasi/suasana asam. Contoh: Anilina di asam menyerap 203 nm (vs 230 nm di netral) akibat konjugasi dihilangkan.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🧪 Phenolphthalein (PP)</h4>
+            <p>Indikator asam-basa. Asam → tidak berwarna (λ tidak terlihat di visible). Basa → merah muda/merah (λ maks ~550 nm). Larutan PP 1% dibuat dalam etanol 96%.</p>
+          </div>
+          <div class="materi-card">
+            <h4>⚗️ Pembuatan Reagen</h4>
+            <p>NaOH 0,1 N = 0,4 g/100 mL. HCl 0,1 N = 830 μL HCl 37%/100 mL. Pengukuran pada λ 260–660 nm untuk membandingkan spektrum asam vs basa.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="perc-body">
+    <div class="soal-list">
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Apa tujuan Percobaan 6?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Mahasiswa dapat melihat dan memahami adanya <strong>pergeseran bathokromik</strong> berdasarkan pengaruh pH (asam dan basa).</div>
+        <div class="soal-answer">Mahasiswa dapat melihat dan memahami adanya <strong>pergeseran bathokromik</strong> berdasarkan pengaruh pH (suasana asam vs basa) pada pengukuran spektrofotometri UV-Vis menggunakan phenolphthalein.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
-          <span class="soal-q">Jelaskan prosedur pembuatan larutan uji asam dan basa!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Jelaskan perbedaan pergeseran bathokromik dan hipsokromik!</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">
-          <strong>Asam:</strong> Pipet 0,1 mL PP 1% + 0,2 mL HCl 0,1 N → labu ukur 10 mL → tambah aquadest → baca 260–660 nm.<br><br>
-          <strong>Basa:</strong> Pipet 0,1 mL PP 1% + 0,2 mL NaOH 0,1 N → labu ukur 10 mL → tambah aquadest → baca 260–660 nm.
-        </div>
+        <div class="soal-answer"><strong>Bathokromik (Red Shift)</strong> = pergeseran ke panjang gelombang <em>lebih panjang</em>, disebabkan substitusi atau pengaruh pH basa/pelarut.<br><br><strong>Hipsokromik (Blue Shift)</strong> = pergeseran ke panjang gelombang <em>lebih pendek</em>, disebabkan protonasi atau suasana asam. Contoh: anilin 230 nm → asam 203 nm.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
-          <span class="soal-q">Apa perbedaan pergeseran bathokromik dan hipsokromik?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Bagaimana prosedur pembuatan larutan uji asam dan basa pada Percobaan 6?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">
-          <strong>Bathokromik (Red Shift)</strong> = pergeseran ke arah panjang gelombang <em>lebih panjang</em> (akibat substitusi atau pengaruh pelarut/pH basa).<br><br>
-          <strong>Hipsokromik (Blue Shift)</strong> = pergeseran ke arah panjang gelombang <em>lebih pendek</em> (akibat protonasi/suasana asam).
-        </div>
+        <div class="soal-answer"><strong>Asam:</strong> Pipet 0,1 mL PP 1% + 0,2 mL HCl 0,1 N → labu ukur 10 mL + aquadest → baca 260–660 nm.<br><br><strong>Basa:</strong> Pipet 0,1 mL PP 1% + 0,2 mL NaOH 0,1 N → labu ukur 10 mL + aquadest → baca 260–660 nm.</div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Mengapa phenolphthalein digunakan dalam percobaan ini?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Bagaimana cara membuat larutan NaOH 0,1 N sebanyak 100 mL?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Phenolphthalein adalah indikator asam-basa yang warnanya berubah tergantung pH. Dalam suasana <strong>asam → tidak berwarna</strong>, dalam suasana <strong>basa → merah muda/merah</strong>, sehingga pergeseran spektrum dapat terlihat jelas.</div>
+        <div class="soal-answer">Timbang <strong>0,4 gram NaOH</strong> → larutkan dalam aquadest secukupnya di beaker glass → pindahkan ke labu ukur 100 mL → tambah aquadest hingga tanda batas → homogenkan. (BM NaOH = 40 g/mol; 0,1 N × 40 × 0,1 L = 0,4 g)</div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Bagaimana cara membuat larutan NaOH 0,1 N?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Mengapa phenolphthalein digunakan dalam percobaan pergeseran bathokromik?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Timbang <strong>0,4 gram NaOH</strong> → larutkan dalam aquadest secukupnya di beaker glass → pindahkan ke labu ukur 100 mL → tambahkan aquadest hingga tanda batas → homogenkan.</div>
+        <div class="soal-answer">Phenolphthalein adalah <strong>indikator asam-basa</strong> yang mengalami perubahan struktur molekul tergantung pH. Di suasana <strong>asam: tidak berwarna</strong> (lakton tertutup, tidak menyerap visible), di suasana <strong>basa: merah muda</strong> (struktur terbuka/kuinonoid, λ maks ~550 nm) → pergeseran bathokromik terlihat jelas.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Apa yang menyebabkan terjadinya pergeseran bathokromik?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Pergeseran bathokromik disebabkan oleh: <strong>penambahan gugus auksokrom</strong> (seperti –OH, –NH₂, –OR), <strong>pengaruh pelarut</strong> yang lebih polar, <strong>peningkatan konjugasi</strong> pada sistem ikatan, atau <strong>perubahan pH</strong> (basa) yang mengubah struktur molekul menjadi lebih terkonjugasi.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Berapa volume HCl 37% yang diperlukan untuk membuat HCl 0,1 N 100 mL?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Berdasarkan prosedur modul: dipipet <strong>830 μL HCl 37%</strong> → dimasukkan ke beaker glass 100 mL yang sudah berisi ± 50 mL aquadest → diaduk → pindahkan ke labu ukur 100 mL → tambah aquadest hingga tanda batas → homogenkan.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Selain bathokromik dan hipsokromik, sebutkan jenis pergeseran serapan lainnya!</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer"><ul><li><strong>Bathokromik</strong> – ke λ lebih panjang (red shift)</li><li><strong>Hipsokromik</strong> – ke λ lebih pendek (blue shift)</li><li><strong>Hiperkromik</strong> – peningkatan intensitas absorbansi (nilai ε naik)</li><li><strong>Hipokromik</strong> – penurunan intensitas absorbansi (nilai ε turun)</li></ul></div>
+      </div>
+      <div class="soal-item" data-type="bonus">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-bonus">Bonus</span>
+          <span class="soal-q">Mengapa HCl harus ditambahkan ke aquadest (bukan sebaliknya)?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Prinsip keselamatan laboratorium: <strong>"tambahkan asam ke air, bukan air ke asam"</strong>. Jika air ditambahkan ke asam pekat, reaksi eksotermis yang terjadi sangat cepat dapat menyebabkan percikan asam yang berbahaya. Dengan menambahkan asam ke air secara perlahan, panas yang dihasilkan tersebar lebih merata dan lebih aman.</div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- P7 -->
-  <div class="percobaan" data-perc="7">
-    <div class="percobaan-header" onclick="togglePerc(this)">
-      <span class="perc-num">P-07</span>
-      <span class="perc-title">Kesalahan Spektrofotometri Kafein</span>
-      <span class="perc-count">5 soal</span>
-      <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- ===== PERCOBAAN 7 ===== -->
+<div class="percobaan">
+  <div class="percobaan-header" onclick="togglePerc(this)">
+    <span class="perc-num">P-07</span>
+    <span class="perc-title">Kesalahan Spektrofotometri Kafein</span>
+    <span class="perc-count">9 soal</span>
+    <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="perc-body">
+    <div class="materi-section">
+      <div class="materi-header" onclick="toggleMateri(this.parentElement)">
+        <span class="materi-label">Materi</span>
+        <span class="materi-title">Ringkasan Teori Percobaan 7</span>
+        <span class="materi-toggle">Buka ▾</span>
+      </div>
+      <div class="materi-body">
+        <div class="materi-grid">
+          <div class="materi-card">
+            <h4>⚠️ Kesalahan Spektrofotometri</h4>
+            <p>Terjadi akibat variasi konsentrasi. Pada konsentrasi terlalu tinggi atau rendah, kesalahan pengukuran membesar. Blanko: A = 0, T = 100%.</p>
+          </div>
+          <div class="materi-card">
+            <h4>📐 Transmitan Optimal</h4>
+            <p>Kesalahan minimal pada T = <strong>36,8%</strong> atau A = <strong>0,434</strong>. Rentang T yang masih dapat diterima: 20–65% (A = 0,187–0,699).</p>
+          </div>
+          <div class="materi-card">
+            <h4>🔄 Hubungan A dan T</h4>
+            <p><span class="formula-box">A = log (1/T) = −log T</span><br>T = 100% → A = 0. T = 10% → A = 1. T = 36,8% → A = 0,434.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🧪 Pengenceran Bertahap</h4>
+            <p>100 ppm → pipet 0,5 mL ke 50 mL = 1 ppm. 1 ppm → pipet 1 mL ke 10 mL = 0,1 ppm. Dari 0,1 ppm dibuat seri T 5%, 35%, 65%, 95%.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="perc-body">
+    <div class="soal-list">
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Apa tujuan Percobaan 7?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Mengetahui kesalahan pengukuran akibat variasi konsentrasi, dan menetapkan nilai <strong>absorbansi/transmitan yang memberikan kesalahan minimal</strong>.</div>
+        <div class="soal-answer">Mahasiswa mengetahui kesalahan pengukuran karena <strong>variasi konsentrasi</strong>, dan mampu menetapkan nilai absorbansi/transmitan yang <strong>memberikan kesalahan minimal</strong> dalam pengukuran spektrofotometri.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
-          <span class="soal-q">Bagaimana prosedur pembuatan larutan kafein 1 ppm dari 100 ppm?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Bagaimana prosedur pengenceran kafein dari 100 ppm ke 1 ppm dan 0,1 ppm?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Pipet <strong>0,5 mL</strong> larutan kafein 100 ppm → masukkan ke labu ukur 50 mL → tambahkan aquadest hingga tanda batas → homogenkan → dapat konsentrasi <strong>1 ppm</strong>.</div>
+        <div class="soal-answer"><strong>100 ppm → 1 ppm:</strong> Pipet 0,5 mL → labu 50 mL + aquadest. (V₁C₁=V₂C₂: 0,5×100 = 50×1 ✅)<br><br><strong>1 ppm → 0,1 ppm:</strong> Pipet 1 mL → labu 10 mL + aquadest. (1×1 = 10×0,1 ✅)</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
-          <span class="soal-q">Pada nilai transmitan berapa kesalahan pengukuran minimal?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Pada nilai transmitan berapa kesalahan spektrofotometri minimal?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Kesalahan spektrofotometri minimal terjadi pada transmitan <strong>36,8% (T = 0,368)</strong> atau absorbansi <strong>A = 0,434</strong>. Di luar rentang T 20–65% kesalahan mulai membesar.</div>
+        <div class="soal-answer">Kesalahan spektrofotometri minimal pada <strong>T = 36,8%</strong> atau <strong>A = 0,434</strong>. Rentang transmitan yang masih dapat diterima adalah <strong>T = 20–65%</strong> (A = 0,187–0,699).</div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Jelaskan hubungan antara transmitan dan absorbansi!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Jelaskan hubungan matematika antara transmitan (T) dan absorbansi (A)!</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
         <div class="soal-answer">
-          <span class="formula">A = log (1/T) = -log T</span><br><br>
-          Jika T = 100% → A = 0 (tidak ada penyerapan). Jika T = 10% → A = 1. <strong>Hubungannya berbanding terbalik</strong>.
+          <span class="formula">T = It / I₀</span> (perbandingan intensitas diteruskan dengan datang)<br>
+          <span class="formula">A = log (1/T) = −log T = log (I₀/It)</span><br><br>
+          T = 100% → A = 0 | T = 50% → A = 0,301 | T = 10% → A = 1 | T = 1% → A = 2
         </div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Bagaimana cara men-setting blanko di spektrofotometer?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Bagaimana cara setting blanko pada spektrofotometer?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Blanko diset dengan nilai <strong>Absorbansi = 0</strong> atau <strong>Transmitan = 100%</strong>. Blanko berisi pelarut (aquadest/metanol) tanpa analit, dan diukur terlebih dahulu sebelum pengukuran sampel.</div>
+        <div class="soal-answer">Blanko berisi pelarut (aquadest/metanol) tanpa analit. Di-setting dengan nilai <strong>Absorbansi = 0</strong> atau <strong>Transmitan = 100%</strong> sebelum pengukuran sampel. Tujuannya mengeliminasi kontribusi pelarut terhadap absorbansi.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Mengapa kafein digunakan dalam percobaan kesalahan spektrofotometri (bukan paracetamol)?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Kafein dilarutkan dalam <strong>aquadest</strong> (tidak memerlukan metanol organik) dan memiliki serapan UV yang baik. Penggunaan kafein juga mempersiapkan mahasiswa untuk <strong>Percobaan 8</strong> (analisis simultan paracetamol + kafein) dengan mengenali sifat spektroskopi kafein terlebih dahulu.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Apa yang dimaksud "nilai sebenarnya" dalam konteks pengukuran spektrofotometri?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Nilai sebenarnya adalah nilai yang <strong>mengkarakterisasi suatu kuantitas secara benar</strong> pada kondisi tertentu saat diukur. Dalam spektrofotometri, ini adalah konsentrasi analit yang sesungguhnya. Setiap pengukuran berusaha mendekati nilai sebenarnya ini dengan meminimalkan kesalahan (Beran, 1996).</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Apa yang terjadi pada pengukuran jika konsentrasi terlalu tinggi (T mendekati 5%)?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Jika T terlalu rendah (<20%), <strong>kesalahan pengukuran membesar</strong> karena detektor menerima sangat sedikit cahaya sehingga sinyal/noise ratio buruk. Ini disebut <em>stray light error</em>. Solusinya: encerkan sampel agar T masuk rentang optimal 20–65%.</div>
+      </div>
+      <div class="soal-item" data-type="bonus">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-bonus">Bonus</span>
+          <span class="soal-q">Mengapa T = 36,8% atau A = 0,434 menjadi titik kesalahan minimal secara matematis?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Secara matematis, kesalahan relatif konsentrasi (dc/c) diminimalkan ketika dE/dT = 0, dan hasilnya menunjukkan bahwa minimum terjadi pada <strong>T = 1/e ≈ 0,368 atau 36,8%</strong> (di mana e = bilangan Euler ≈ 2,718). Ini adalah nilai yang secara kalkulus memberikan kesalahan propagasi terkecil.</div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- P8 -->
-  <div class="percobaan" data-perc="8">
-    <div class="percobaan-header" onclick="togglePerc(this)">
-      <span class="perc-num">P-08</span>
-      <span class="perc-title">Analisis Paracetamol & Kafein dalam Tablet</span>
-      <span class="perc-count">5 soal</span>
-      <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- ===== PERCOBAAN 8 ===== -->
+<div class="percobaan">
+  <div class="percobaan-header" onclick="togglePerc(this)">
+    <span class="perc-num">P-08</span>
+    <span class="perc-title">Analisis Simultan Paracetamol & Kafein</span>
+    <span class="perc-count">9 soal</span>
+    <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="perc-body">
+    <div class="materi-section">
+      <div class="materi-header" onclick="toggleMateri(this.parentElement)">
+        <span class="materi-label">Materi</span>
+        <span class="materi-title">Ringkasan Teori Percobaan 8</span>
+        <span class="materi-toggle">Buka ▾</span>
+      </div>
+      <div class="materi-body">
+        <div class="materi-grid">
+          <div class="materi-card">
+            <h4>📊 Analisis Simultan</h4>
+            <p>Kadar 2 zat ditentukan tanpa pemisahan. Syarat: λ maks keduanya tidak berhimpit. Absorbansi campuran = jumlah absorbansi masing-masing zat (additivitas).</p>
+          </div>
+          <div class="materi-card">
+            <h4>📐 Prinsip Matematika</h4>
+            <p>Diukur pada 2 λ: A(λ₁) = ε₁ₐb·c_a + ε₁_b·c_b dan A(λ₂) = ε₂ₐb·c_a + ε₂_b·c_b. Diselesaikan secara simultan untuk mendapat c_a dan c_b.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🧪 Seri Standar P-08</h4>
+            <p>Kafein: 6, 8, 10, 12, 14 ppm. Paracetamol: 4, 6, 8, 10, 12 ppm. Masing-masing dari larutan induk 100 ppm dalam 10 mL akuades.</p>
+          </div>
+          <div class="materi-card">
+            <h4>⚗️ Preparasi Sampel</h4>
+            <p>Serbuk tablet 100 mg + 15 mL metanol → magnetic stirrer 15 menit → saring Whatman No.41 → encerkan ke 100 mL aquadest.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🔬 Aspek Kualitatif vs Kuantitatif</h4>
+            <p>UV-Vis lebih banyak untuk kuantitatif. Kualitatif memerlukan kombinasi dengan IR, NMR, atau MS. Untuk campuran: gunakan metode simultan di 2 λ maks.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="perc-body">
+    <div class="soal-list">
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Apa tujuan Percobaan 8?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Mahasiswa mampu membuat kurva absorbansi campuran dua zat dan menentukan kadar <strong>paracetamol dan kafein secara simultan</strong> dalam tablet.</div>
+        <div class="soal-answer">Mahasiswa mampu membuat <strong>kurva absorbansi campuran dua zat</strong> dan menentukan kadar paracetamol dan kafein dalam tablet secara <strong>simultan</strong> tanpa pemisahan terlebih dahulu.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Jelaskan prinsip analisis simultan dua komponen!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Pengukuran dilakukan pada <strong>2 panjang gelombang</strong> (λ maks masing-masing zat). Absorbansi campuran = jumlah absorbansi tiap zat. Diperoleh 2 persamaan dengan 2 variabel untuk menghitung konsentrasi masing-masing komponen.</div>
+        <div class="soal-answer">Pengukuran dilakukan pada <strong>2 panjang gelombang</strong> (λ maks masing-masing zat). Absorbansi campuran = jumlah absorbansi tiap komponen. Menghasilkan 2 persamaan dengan 2 variabel konsentrasi yang diselesaikan secara simultan.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Jelaskan prosedur pembuatan larutan sampel Percobaan 8!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Serbuk tablet ditimbang 100 mg → tambah 15 mL metanol → aduk magnetic stirrer 15 menit → saring kertas Whatman No. 41 → encerkan dalam gelas ukur 100 mL dengan aquadest.</div>
+        <div class="soal-answer">Serbuk tablet ditimbang <strong>100 mg</strong> → tambah 15 mL metanol → aduk dengan <strong>magnetic stirrer 15 menit</strong> → saring dengan kertas <strong>Whatman No.41</strong> → encerkan filtrat ke dalam gelas ukur 100 mL menggunakan aquadest.</div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Mengapa dua zat harus memiliki λ maks yang tidak berhimpit?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Mengapa dua zat harus memiliki λ maks yang tidak berhimpit untuk analisis simultan?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Agar pengukuran pada λ₁ didominasi oleh satu zat dan λ₂ oleh zat lainnya, sehingga <strong>konsentrasi masing-masing dapat dihitung secara selektif</strong> tanpa gangguan satu sama lain.</div>
+        <div class="soal-answer">Agar pengukuran pada λ₁ didominasi oleh absorbansi satu zat dan λ₂ oleh zat lainnya, sehingga persamaan simultan yang dihasilkan dapat diselesaikan dengan akurat. Jika λ maks berhimpit, <strong>kedua zat akan saling mengganggu</strong> dan konsentrasi tidak dapat dibedakan.</div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Sebutkan seri konsentrasi kurva standar kafein dan paracetamol!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Sebutkan seri konsentrasi kurva standar kafein dan paracetamol pada Percobaan 8!</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer"><strong>Kafein:</strong> 6, 8, 10, 12, 14 ppm (dari larutan induk 100 ppm dalam 10 mL akuades)<br><br><strong>Paracetamol:</strong> 4, 6, 8, 10, 12 ppm (dari larutan induk 100 ppm dalam 10 mL akuades)</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Jelaskan rumus transmitan dan absorbansi dalam metode Bouguer-Lambert-Beer!</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
         <div class="soal-answer">
-          <strong>Kafein:</strong> 6, 8, 10, 12, 14 ppm (dari larutan induk 100 ppm dalam 10 mL akuades)<br><br>
-          <strong>Paracetamol:</strong> 4, 6, 8, 10, 12 ppm (dari larutan induk 100 ppm dalam 10 mL akuades)
+          I₀ = It + Ir + Ia → karena Ir ≈ 4% diabaikan → I₀ = It + Ia<br>
+          <span class="formula">T = It/I₀ = 10^(ε.b.c)</span><br>
+          <span class="formula">A = log(1/T) = ε.b.c</span><br><br>
+          T = transmitan, I₀ = intensitas datang, It = diteruskan, ε = absorptivitas molar, b = tebal kuvet, c = konsentrasi.
         </div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Mengapa kertas Whatman No.41 digunakan untuk penyaringan sampel?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Kertas Whatman No.41 adalah kertas saring dengan <strong>pori sedang</strong> yang cocok untuk menyaring partikel-partikel eksipien tablet (seperti amilum, talkum, MCC) yang tidak larut dalam metanol. Penyaringan penting agar larutan sampel jernih dan tidak mengganggu pengukuran absorbansi.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Apa keuntungan analisis simultan dibanding analisis setelah pemisahan?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer"><ul><li>Lebih <strong>hemat waktu</strong> (tidak perlu tahap pemisahan)</li><li>Lebih <strong>hemat biaya</strong> dan reagen</li><li>Mengurangi <strong>risiko kehilangan analit</strong> saat pemisahan</li><li>Prosedur lebih <strong>sederhana</strong></li><li>Cocok jika kedua senyawa memiliki λ maks yang tidak berhimpit</li></ul></div>
+      </div>
+      <div class="soal-item" data-type="bonus">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-bonus">Bonus</span>
+          <span class="soal-q">Mengapa digunakan magnetic stirrer dalam preparasi sampel P-08?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Magnetic stirrer digunakan selama <strong>15 menit</strong> untuk memastikan <strong>ekstraksi sempurna</strong> zat aktif (paracetamol dan kafein) dari matriks tablet ke dalam pelarut metanol. Pengadukan mekanik mempercepat proses pelarutan dibanding pengadukan manual, sehingga hasil ekstraksi lebih lengkap dan reprodusibel.</div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- P9 -->
-  <div class="percobaan" data-perc="9">
-    <div class="percobaan-header" onclick="togglePerc(this)">
-      <span class="perc-num">P-09</span>
-      <span class="perc-title">Identifikasi Vitamin C dengan KLT</span>
-      <span class="perc-count">5 soal</span>
-      <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- ===== PERCOBAAN 9 ===== -->
+<div class="percobaan">
+  <div class="percobaan-header" onclick="togglePerc(this)">
+    <span class="perc-num">P-09</span>
+    <span class="perc-title">Identifikasi Vitamin C dengan KLT</span>
+    <span class="perc-count">9 soal</span>
+    <svg class="chevron" width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="perc-body">
+    <div class="materi-section">
+      <div class="materi-header" onclick="toggleMateri(this.parentElement)">
+        <span class="materi-label">Materi</span>
+        <span class="materi-title">Ringkasan Teori Percobaan 9</span>
+        <span class="materi-toggle">Buka ▾</span>
+      </div>
+      <div class="materi-body">
+        <div class="materi-grid">
+          <div class="materi-card">
+            <h4>🧪 KLT (Kromatografi Lapis Tipis)</h4>
+            <p>Metode pemisahan kromatografi fleksibel. Fasa diam (lapisan tipis adsorben pada plat) + fasa gerak (eluen) naik secara kapilaritas membawa komponen sampel.</p>
+          </div>
+          <div class="materi-card">
+            <h4>📐 Nilai Rf</h4>
+            <p><span class="formula-box">Rf = jarak komponen / jarak eluen</span><br>Rf berkisar 0–1. Senyawa teridentifikasi jika Rf sampel = Rf standar. Pengotor umumnya Rf > 0,8.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🔬 Fasa Diam</h4>
+            <p>Silika gel, alumina, selulosa, poliamida. Silika gel 60 GF254: ukuran 60Å, G = ada pengikat plaster, F254 = ada indikator fluoresensi di bawah UV 254 nm.</p>
+          </div>
+          <div class="materi-card">
+            <h4>⚗️ Fasa Gerak P-09</h4>
+            <p>Metanol : Asam asetat glasial = <strong>17:3</strong>. Polar karena Vitamin C bersifat polar. Fasa gerak harus jenuh dalam chamber sebelum elusi.</p>
+          </div>
+          <div class="materi-card">
+            <h4>💡 Deteksi UV</h4>
+            <p>Lampu UV 254 nm: senyawa menyerap UV tampak sebagai bercak gelap pada latar hijau (plat GF254). UV 366 nm: senyawa berfluoresensi tampak sebagai bercak terang.</p>
+          </div>
+          <div class="materi-card">
+            <h4>🧫 Preparasi Sampel</h4>
+            <p>700 mg serbuk tablet + 10 mL etanol → kocok → saring → ambil 3 mL → larutkan kembali dalam 10 mL etanol. Standar: 10 mg askorbat/10 mL etanol → 3 mL → 10 mL etanol.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="perc-body">
+    <div class="soal-list">
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
           <span class="soal-q">Apa tujuan Percobaan 9?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Mengetahui teknik identifikasi senyawa dengan <strong>KLT</strong>, mengidentifikasi kandungan Vitamin C dalam sampel tablet, dan menghitung nilai <strong>Rf</strong>.</div>
+        <div class="soal-answer">Mahasiswa mengetahui teknik identifikasi senyawa dengan metode KLT, mengidentifikasi kandungan <strong>Vitamin C (asam askorbat)</strong> dalam sampel tablet, dan menghitung <strong>nilai Rf</strong>.</div>
       </div>
       <div class="soal-item" data-type="pasti">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-pasti">Pasti</span>
-          <span class="soal-q">Jelaskan prosedur KLT identifikasi Vitamin C!</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
-        </div>
-        <div class="soal-answer">Buat fase gerak metanol:asam asetat glasial (17:3) → totolkan larutan standar & sampel pada plat KLT → masukkan plat ke chamber → elusi → angkat & keringkan → deteksi di bawah <strong>lampu UV</strong>.</div>
-      </div>
-      <div class="soal-item" data-type="pasti">
-        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
-          <span class="soal-badge badge-pasti">Pasti</span>
-          <span class="soal-q">Bagaimana cara menghitung nilai Rf?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Bagaimana cara menghitung nilai Rf pada KLT?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
         <div class="soal-answer">
           <span class="formula">Rf = Jarak tempuh komponen / Jarak tempuh eluen</span><br><br>
-          Nilai Rf berkisar <strong>0–1</strong>. Senyawa teridentifikasi jika nilai Rf sampel sama dengan standar.
+          Nilai Rf berkisar <strong>0–1</strong>. Vitamin C dalam sampel teridentifikasi jika nilai Rf-nya <strong>sama dengan nilai Rf standar asam askorbat</strong>.
         </div>
+      </div>
+      <div class="soal-item" data-type="pasti">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-pasti">Pasti</span>
+          <span class="soal-q">Jelaskan prosedur KLT identifikasi Vitamin C secara singkat!</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Buat fase gerak MeOH:asam asetat glasial (17:3) → jenuhkan chamber → totolkan standar & sampel pada plat KLT dengan pipet kapiler → elusi hingga tanda batas → angkat & keringkan → deteksi di bawah <strong>lampu UV</strong> → ukur jarak noda.</div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Apa keuntungan metode KLT dibanding HPLC?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Apa keunggulan KLT dibandingkan HPLC?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">Analisis <strong>beberapa sampel sekaligus (simultan)</strong>, menggunakan fase gerak jumlah kecil sehingga lebih hemat waktu dan biaya, peralatan lebih sederhana, dan lebih ramah lingkungan.</div>
+        <div class="soal-answer"><ul><li>Analisis <strong>beberapa sampel sekaligus</strong> (simultan)</li><li>Menggunakan fase gerak dalam jumlah <strong>kecil</strong> → hemat biaya</li><li>Peralatan lebih <strong>sederhana</strong> dan murah</li><li>Lebih <strong>ramah lingkungan</strong></li><li>Teknik pemisahan lebih <strong>mudah dipelajari</strong></li></ul></div>
       </div>
       <div class="soal-item" data-type="mungkin">
         <div class="soal-top" onclick="toggleSoal(this.parentElement)">
           <span class="soal-badge badge-mungkin">Mungkin</span>
-          <span class="soal-q">Apa yang dimaksud fase diam dan fase gerak pada KLT?</span>
-          <span class="soal-toggle">Lihat jawaban ▾</span>
+          <span class="soal-q">Apa yang dimaksud fasa diam dan fasa gerak pada KLT? Sebutkan contohnya!</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
-        <div class="soal-answer">
-          <strong>Fase diam</strong> = lapisan tipis adsorben (misal silika gel 60 GF254) yang menempel pada plat kaca/aluminium.<br><br>
-          <strong>Fase gerak (eluen)</strong> = pelarut/campuran pelarut yang merambat ke atas membawa komponen sampel. Pada P-09: metanol : asam asetat glasial (17:3).
+        <div class="soal-answer"><strong>Fasa diam</strong> = adsorben yang dilapiskan pada plat (kaca/aluminium/plastik). Contoh: silika gel, alumina, selulosa, poliamida. Di P-09: silika gel GF254.<br><br><strong>Fasa gerak (eluen)</strong> = pelarut yang merambat ke atas secara kapilaritas. Di P-09: metanol : asam asetat glasial (17:3).</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Mengapa chamber harus dijenuhkan dengan fasa gerak sebelum elusi?</span>
+          <span class="soal-toggle">Lihat ▾</span>
         </div>
+        <div class="soal-answer">Penjenuhan chamber mencegah <strong>penguapan fasa gerak</strong> yang tidak merata selama elusi. Jika chamber tidak jenuh, fasa gerak akan menguap dari plat sehingga kecepatan rambat tidak seragam, mengakibatkan <strong>nilai Rf tidak reprodusibel</strong> dan noda melebar.</div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Jelaskan arti kode "Silika Gel 60 GF254" pada plat KLT!</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer"><ul><li><strong>Silika Gel</strong> = jenis fasa diam</li><li><strong>60</strong> = ukuran pori 60 Å</li><li><strong>G</strong> = mengandung bahan pengikat (<em>gips/plaster</em>)</li><li><strong>F254</strong> = mengandung <em>indikator fluoresensi</em> yang memancarkan sinar di bawah lampu UV 254 nm → senyawa penyerap UV tampak sebagai bercak gelap</li></ul></div>
+      </div>
+      <div class="soal-item" data-type="mungkin">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-mungkin">Mungkin</span>
+          <span class="soal-q">Mengapa fasa gerak untuk Vitamin C bersifat polar?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Vitamin C (asam askorbat) bersifat <strong>polar</strong> karena memiliki banyak gugus hidroksil (–OH). Prinsip KLT: <em>"like dissolves like"</em>. Fasa gerak polar (metanol + asam asetat) akan membawa Vitamin C bermigrasi lebih jauh, sementara fasa diam polar (silika) akan menahan senyawa non-polar. Pemilihan polaritas fasa gerak menentukan nilai Rf yang diperoleh.</div>
+      </div>
+      <div class="soal-item" data-type="bonus">
+        <div class="soal-top" onclick="toggleSoal(this.parentElement)">
+          <span class="soal-badge badge-bonus">Bonus</span>
+          <span class="soal-q">Mengapa pengotor pada plat KLT umumnya memiliki Rf tinggi (>0,8) saat menggunakan fasa gerak polar?</span>
+          <span class="soal-toggle">Lihat ▾</span>
+        </div>
+        <div class="soal-answer">Kotoran/pengotor pada plat KLT umumnya bersifat <strong>hidrofil (polar)</strong>. Ketika fasa gerak polar digunakan, pengotor cenderung <strong>ikut bermigrasi bersama fasa gerak</strong> (lebih suka fasa gerak daripada fasa diam) sehingga terelusi jauh ke atas menghasilkan Rf tinggi (>0,8). Ini perlu diperhatikan agar noda analit tidak berhimpit dengan noda pengotor.</div>
       </div>
     </div>
   </div>
+</div>
 
-  </div><!-- end cardList -->
+</div><!-- end cardList -->
 
-  <div class="footer">
-    Modul Praktikum Analisis Farmasi 2026 · S1 Farmasi Klinis & Komunitas · ITEKES Bintang Persada
-  </div>
+<div class="footer">
+  Modul Praktikum Analisis Farmasi 2026 · S1 Farmasi Klinis & Komunitas · ITEKES Bintang Persada Denpasar<br>
+  <span style="margin-top:0.3rem;display:block">Gunakan sebagai bahan belajar, bukan pengganti membaca modul 📖</span>
+</div>
 </div>
 
 <script>
   function togglePerc(header) {
-    const card = header.parentElement;
-    card.classList.toggle('open');
+    header.parentElement.classList.toggle('open');
   }
-
+  function toggleMateri(section) {
+    section.classList.toggle('open');
+    const toggle = section.querySelector('.materi-toggle');
+    toggle.textContent = section.classList.contains('open') ? 'Tutup ▴' : 'Buka ▾';
+  }
   function toggleSoal(item) {
     item.classList.toggle('open');
     const toggle = item.querySelector('.soal-toggle');
-    toggle.textContent = item.classList.contains('open') ? 'Tutup ▴' : 'Lihat jawaban ▾';
+    toggle.textContent = item.classList.contains('open') ? 'Tutup ▴' : 'Lihat ▾';
   }
 
   // Search
   document.getElementById('searchInput').addEventListener('input', function() {
-    const q = this.value.toLowerCase();
+    const q = this.value.toLowerCase().trim();
     document.querySelectorAll('.soal-item').forEach(item => {
-      const text = item.textContent.toLowerCase();
-      item.classList.toggle('hidden', q.length > 0 && !text.includes(q));
+      item.classList.toggle('hidden', q.length > 0 && !item.textContent.toLowerCase().includes(q));
     });
-    // Show/hide percobaan cards
     document.querySelectorAll('.percobaan').forEach(card => {
-      const visible = [...card.querySelectorAll('.soal-item')].some(i => !i.classList.contains('hidden'));
-      card.classList.toggle('hidden', !visible);
-      if (q.length > 0 && visible) card.classList.add('open');
+      const hasVisible = [...card.querySelectorAll('.soal-item')].some(i => !i.classList.contains('hidden'));
+      card.classList.toggle('hidden', q.length > 0 && !hasVisible);
+      if (q.length > 0 && hasVisible) card.classList.add('open');
+      if (q.length === 0) card.classList.remove('hidden');
     });
   });
 
   // Filter
   function filterAll(btn) {
     setActive(btn);
-    document.querySelectorAll('.soal-item, .percobaan').forEach(el => el.classList.remove('hidden'));
+    document.querySelectorAll('.soal-item,.percobaan').forEach(el => el.classList.remove('hidden'));
   }
   function filterType(type, btn) {
     setActive(btn);
@@ -960,8 +1517,8 @@
       item.classList.toggle('hidden', item.dataset.type !== type);
     });
     document.querySelectorAll('.percobaan').forEach(card => {
-      const visible = [...card.querySelectorAll('.soal-item')].some(i => !i.classList.contains('hidden'));
-      card.classList.toggle('hidden', !visible);
+      const hasVisible = [...card.querySelectorAll('.soal-item')].some(i => !i.classList.contains('hidden'));
+      card.classList.toggle('hidden', !hasVisible);
     });
   }
   function setActive(btn) {
